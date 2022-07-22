@@ -4,7 +4,7 @@ import moment from "moment";
 const Greeting = (props) => {
   // console.log(props);
 
-  const years = moment(new Date()).diff(moment(props.birthDate));
+  const years = moment(new Date()).diff(moment(props.birthDate), "years");
   console.log(years);
 
   return (
