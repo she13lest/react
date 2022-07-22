@@ -2,14 +2,14 @@ import React from "react";
 import moment from "moment";
 
 const Greeting = (props) => {
-  console.log(props);
+  // console.log(props);
 
-  const years = moment(new Date()).diff(moment(props.birthDay));
+  const years = moment(new Date()).diff(moment(props.birthDate));
   console.log(years);
 
   return (
     <div className="greeting">
-      {`My name is ${props.name} ${props.surname}. I'm ${props.years} years old`}{" "}
+      {`My name is ${props.firstName} ${props.lastName}. I'm ${years} years old`}{" "}
     </div>
   );
 };
