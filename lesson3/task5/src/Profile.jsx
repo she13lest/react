@@ -7,10 +7,10 @@ const Profile = (props) => {
 
   return (
     <div className="profile">
-      <p class="profile__name">
-        {` ${props.userData.firstName} ${props.userData.lastName}.`}
+      <p className="profile__name">
+        {` ${props.userData.firstName} ${props.userData.lastName}`}
       </p>
-      <p class="profile__birth">{`Was born ${birthDay} in ${props.userData.birthPlace}.`}</p>
+      <p className="profile__birth">{`Was born ${birthDay} in ${props.userData.birthPlace}`}</p>
     </div>
   );
 };
