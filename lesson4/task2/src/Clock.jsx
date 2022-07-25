@@ -14,7 +14,6 @@ const getTimeWithOffset = (offset) => {
 class Clock extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       location: props.location,
       time: props.offset,
@@ -31,9 +30,9 @@ class Clock extends Component {
     return (
       <div className="clock">
         <div className="clock__location">{this.state.location}</div>
-        <div className="clock__time">{`${getTimeWithOffset(
-          this.state.time
-        )}`}</div>
+        <div className="clock__time">
+          {`${getTimeWithOffset(this.state.time)}`}
+        </div>
       </div>
     );
   }
