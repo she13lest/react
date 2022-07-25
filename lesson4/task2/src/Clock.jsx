@@ -36,4 +36,4 @@ class Clock extends Component {
   }
 }
 
-export default getTimeWithOffset;
+export default Clock;
