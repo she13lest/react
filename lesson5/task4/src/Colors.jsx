@@ -1,16 +1,33 @@
 import React from "react";
 
+const RED = "#f00";
+const GREEN = "#0f0";
+const BLUE = "#00f";
+
 class Colors extends React.Component {
+  setBodyColor = (color, e) => {
+    console.log(e);
+    document.body.style.backgroundColor = color;
+  };
+
   render() {
     return (
-      <div class="counter">
-        <button data-action="decrease" class="counter__button">
-          -
-        </button>
-        <span class="counter__value">0</span>
-        <button data-action="increase" class="counter__button">
-          +
-        </button>
+      <div className="colors">
+        <button
+          style={{ backgroundColor: RED }}
+          onClick={() => this.setBodyColor(RED)}
+          className="colors__button"
+        />
+        <button
+          style={{ backgroundColor: GREEN }}
+          onClick={() => this.setBodyColor(GREEN)}
+          className="colors__button"
+        />
+        <button
+          style={{ backgroundColor: BLUE }}
+          onClick={() => this.setBodyColor(BLUE)}
+          className="colors__button"
+        />
       </div>
     );
   }
