@@ -14,15 +14,14 @@ class Auth extends React.Component {
 
   handleLogin = () => {
     this.setState({
-      isLoggedIn: "loading...",
+      isLoggedIn: "loading",
     });
 
     setTimeout(() => {
       this.setState({
         isLoggedIn: true,
-      }),
-        2000;
-    });
+      });
+    }, 2000);
   };
 
   handleLogout = () => {
@@ -36,7 +35,7 @@ class Auth extends React.Component {
       return <Login onLogin={this.handleLogin} />;
     } else if (this.state.isLoggedIn === true) {
       return <Logout onLogout={this.handleLogout} />;
-    } else if (this.state.isLoggedIn === "loading...") {
+    } else if (this.state.isLoggedIn === "loading") {
       return <Spinner size={40} />;
     }
   }
