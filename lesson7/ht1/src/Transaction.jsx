@@ -11,8 +11,7 @@ const Transaction = ({ ...transaction }) => {
         {moment(transaction.time).format("hh:mm")}
       </span>
       <span className="transaction__assets">
-        {transaction.from} {"→"}
-        {transaction.to}
+        {`${transaction.from} → ${transaction.to}`}
       </span>
       <span className="transaction__rate">
         {new Intl.NumberFormat("en-GB").format(transaction.rate)}
