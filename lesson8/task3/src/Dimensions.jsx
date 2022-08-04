@@ -9,6 +9,8 @@ class Dimensions extends React.Component {
       width: innerWidth,
       height: innerHeight,
     };
+
+    document.title = `${innerWidth} x ${innerHeight}`;
   }
 
   componentDidMount() {
