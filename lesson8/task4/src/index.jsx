@@ -5,4 +5,4 @@ import User from "./User";
 
 const elementRoot = document.querySelector("#root");
 
-ReactDOM.render(<User userId="facebook" />, elementRoot);
+ReactDOM.render(<User userId="Github" />, elementRoot);
