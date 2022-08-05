@@ -6,11 +6,11 @@ class App extends React.Component {
     visible: true,
   };
 
-  toggle() {
+  toggle = () => {
     this.setState({
       visible: !this.state.visible,
     });
-  }
+  };
 
   render() {
     return (
@@ -20,11 +20,11 @@ class App extends React.Component {
         </button>
         <div>
           {this.state.visible && (
-            <>
+            <div className="mainBlock">
               <Clock location="New York" offset={-5} />
               <Clock location="Kyiv" offset={2} />
               <Clock location="London" offset={0} />
-            </>
+            </div>
           )}
         </div>
       </div>
