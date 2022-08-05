@@ -3,6 +3,7 @@ import React from "react";
 class ConnectionStatus extends React.Component {
   state = {
     connection: "online",
+    css: "status",
   };
 
   componentDidMount() {
@@ -13,11 +14,13 @@ class ConnectionStatus extends React.Component {
   onOnline = () => {
     this.setState({
       connection: "online",
+      css: "status",
     });
   };
   onOffline = () => {
     this.setState({
       connection: "offline",
+      css: "status status_offline",
     });
   };
 
@@ -27,13 +30,7 @@ class ConnectionStatus extends React.Component {
   }
 
   render() {
-    if (this.state.connection === "offline") {
-      return (
-        <div className="status status_offline">{this.state.connection}</div>
-      );
-    }
-
-    return <div className="status">{this.state.connection}</div>;
+    return <div className={this.state.css}>{this.state.connection}</div>;
   }
 }
 
