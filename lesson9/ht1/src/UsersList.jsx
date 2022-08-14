@@ -3,14 +3,10 @@ import User from "./User";
 import Filter from "./Filter";
 
 class UserList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      users: this.props.users,
-      filterText: "",
-    };
-  }
+  state = {
+    users: this.props.users,
+    filterText: "",
+  };
 
   handleChange = (e) => {
     e.preventDefault();
@@ -21,16 +17,20 @@ class UserList extends React.Component {
   };
 
   render() {
-    let newUsersList = this.state.users.filter((user) =>
-      user.name.toUpperCase().includes(this.state.filterText.toUpperCase())
-    );
+    console.log(this.state.filterText);
+    let newUsersList;
+    newUsersList = !this.state.filterText
+      ? this.state.users
+      : this.state.users.filter((user) =>
+          user.name.toUpperCase().includes(this.state.filterText.toUpperCase())
+        );
 
     return (
       <div>
         <Filter
+          onChange={this.handleChange}
           filterText={this.state.filterText}
           count={newUsersList.length}
-          onChange={this.handleChange}
         />
         <ul className="users">
           {newUsersList.map((user) => (
