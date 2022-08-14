@@ -8,7 +8,7 @@ class UserList extends React.Component {
     filterText: "",
   };
 
-  handleChange = (e) => {
+  onChange = (e) => {
     e.preventDefault();
 
     this.setState({
@@ -18,6 +18,7 @@ class UserList extends React.Component {
 
   render() {
     console.log(this.state.filterText);
+
     let newUsersList;
     newUsersList = !this.state.filterText
       ? this.state.users
@@ -28,7 +29,7 @@ class UserList extends React.Component {
     return (
       <div>
         <Filter
-          onChange={this.handleChange}
+          onChange={this.onChange}
           filterText={this.state.filterText}
           count={newUsersList.length}
         />

@@ -8,5 +8,4 @@ const User = ({ name, age }) => {
     </li>
   );
 };
-
 export default User;
