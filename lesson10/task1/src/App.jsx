@@ -14,7 +14,7 @@ class App extends React.Component {
   fetchUser = (userId) => {
     fetch(`https://api.github.com/users/${userId}`)
       .then((response) => response.json())
-      .then((data) => {
+      .then((userData) => {
         this.setState({
           userData,
         });
