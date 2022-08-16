@@ -7,7 +7,7 @@ class FilterableProductTable extends React.Component {
     super(props);
     this.state = {
       filterText: "",
-      inStockOnly: "false",
+      inStockOnly: false,
     };
   }
 
