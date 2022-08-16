@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
   }
 
   handleInStockChange(e) {
-    this.props.onInStockChange(e.target.cheked);
+    this.props.onInStockChange(e.target.checked);
   }
 
   render() {
@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
             type="checkbox"
             checked={this.props.inStockOnly}
             onChange={this.handleInStockChange}
-          />{" "}
+          />
           Only show products in stock
         </p>
       </form>
