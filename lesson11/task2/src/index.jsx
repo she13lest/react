@@ -5,4 +5,4 @@ import App from "./App";
 
 const elementRoot = document.querySelector("#root");
 
-ReactDOM.render(<App userId="GitHub" />, elementRoot);
+ReactDOM.render(<App />, elementRoot);
