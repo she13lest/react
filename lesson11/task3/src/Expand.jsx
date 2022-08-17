@@ -1,10 +1,10 @@
 import React from "react";
 
-const Expand = () => {
+const Expand = ({ title }) => {
   return (
     <div className="expand border">
       <div className="expand__header">
-        <span className="expand__title">Some title</span>
+        <span className="expand__title">{title}</span>
         <button className="expand__toggle-btn">
           <i className="fas fa-chevron-up"></i>
         </button>
