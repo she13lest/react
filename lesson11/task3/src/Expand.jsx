@@ -5,12 +5,6 @@ class Expand extends React.Component {
     isExpanded: false,
   };
 
-  handleToggle = () => {
-    this.setState({
-      isExpanded: !this.state.isExpanded,
-    });
-  };
-
   render() {
     return (
       <div className="expand border">
