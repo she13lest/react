@@ -2,7 +2,7 @@ import React from "react";
 
 class Expand extends React.Component {
   state = {
-    isExpanded: true,
+    isExpanded: false,
   };
 
   handleToggle = () => {
