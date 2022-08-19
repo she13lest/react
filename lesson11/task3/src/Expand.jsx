@@ -18,9 +18,9 @@ class Expand extends React.Component {
           <span className="expand__title">{this.props.title}</span>
           <button onClick={this.handleToggle} className="expand__toggle-btn">
             {this.state.isExpanded ? (
-              <i className="fas fa-chevron-up"></i>
+              <i className="fas fa-chevron-up">↟</i>
             ) : (
-              <i className="fas fa-chevron-down"></i>
+              <i className="fas fa-chevron-down">↡</i>
             )}
           </button>
         </div>
