@@ -2,29 +2,49 @@ import React from "react";
 import CreateTaskInput from "./CreateTaskInput";
 import Task from "./Task";
 
+const baseUrl = "https://6300ebba9a1035c7f8fab151.mockapi.io/tasks";
+
 class Taskslist extends React.Component {
   state = {
-    tasks: [
-      { text: "Buy milk", done: false, id: 1 },
-      { text: "Pick up Tom from airport", done: false, id: 2 },
-      { text: "Visit party", done: false, id: 3 },
-      { text: "Visit doctor", done: true, id: 4 },
-      { text: "Buy meat", done: true, id: 5 },
-    ],
+    tasks: [],
+  };
+
+  componentDidMount() {
+    this.fetchTasksList();
+  }
+
+  fetchTasksList = () => {
+    fetch(baseUrl)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((taskslist) => {
+        this.setState({
+          tasks: taskslist,
+        });
+      });
   };
 
   onCreate = (text) => {
-    const { tasks } = this.state;
     const newTask = {
       text,
       done: false,
-      id: Math.random(),
     };
 
-    const updatedTasks = tasks.concat(newTask);
-
-    this.setState({
-      tasks: updatedTasks,
+    fetch(baseUrl, {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json;utc-8",
+      },
+      body: JSON.stringify(newTask),
+    }).then((response) => {
+      if (response.ok) {
+        this.fetchTasksList();
+      } else {
+        throw new Error("Failed to create task");
+      }
     });
   };
 
@@ -42,8 +62,15 @@ class Taskslist extends React.Component {
   };
 
   handleTaskDelete = (id) => {
-    const updatedTasks = this.state.tasks.filter((task) => task.id !== id);
-    this.setState({ tasks: updatedTasks });
+    fetch(`${baseUrl}/${id}`, {
+      method: "DELETE",
+    }).then((response) => {
+      if (response.ok) {
+        this.fetchTasksList();
+      } else {
+        throw new Error("Failed to delete task");
+      }
+    });
   };
 
   render() {
