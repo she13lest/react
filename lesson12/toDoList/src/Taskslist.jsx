@@ -1,8 +1,12 @@
 import React from "react";
 import CreateTaskInput from "./CreateTaskInput";
 import Task from "./Task";
-
-const baseUrl = "https://6300ebba9a1035c7f8fab151.mockapi.io/tasks";
+import {
+  createTask,
+  fetchTasksList,
+  updateTask,
+  deleteTask,
+} from "./tasksGateWay";
 
 class Taskslist extends React.Component {
   state = {
@@ -10,21 +14,15 @@ class Taskslist extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchTasksList();
+    this.fetchTasks();
   }
 
-  fetchTasksList = () => {
-    fetch(baseUrl)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
+  fetchTasks = () => {
+    fetchTasksList().then((tasksList) =>
+      this.setState({
+        tasks: tasksList,
       })
-      .then((taskslist) => {
-        this.setState({
-          tasks: taskslist,
-        });
-      });
+    );
   };
 
   onCreate = (text) => {
@@ -33,44 +31,20 @@ class Taskslist extends React.Component {
       done: false,
     };
 
-    fetch(baseUrl, {
-      method: "POST",
-      header: {
-        "Content-Type": "application/json;utc-8",
-      },
-      body: JSON.stringify(newTask),
-    }).then((response) => {
-      if (response.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error("Failed to create task");
-      }
-    });
+    createTask(newTask).then(() => this.fetchTasks());
   };
 
   hanleTaskStatusChange = (id) => {
-    const updatedTasks = this.state.tasks.map((task) => {
-      if (task.id === id) {
-        return {
-          ...task,
-          done: !task.done,
-        };
-      }
-      return task;
-    });
-    this.setState({ tasks: updatedTasks });
+    const { done, text } = this.state.tasks.find((task) => task.id === id);
+    const updatedTask = {
+      text,
+      done: !done,
+    };
+    updateTask(id, updatedTask).then(() => this.fetchTasks());
   };
 
   handleTaskDelete = (id) => {
-    fetch(`${baseUrl}/${id}`, {
-      method: "DELETE",
-    }).then((response) => {
-      if (response.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error("Failed to delete task");
-      }
-    });
+    deleteTask(id).then(() => this.fetchTasks());
   };
 
   render() {
