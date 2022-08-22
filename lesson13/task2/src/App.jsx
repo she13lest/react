@@ -1,16 +1,29 @@
 import React from "react";
-import Expand from "./Expand";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import Home from "./Home";
+import Products from "./Products";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
-        <Expand title="Some title">
-          <p>
-            Hooks are a new addition in React 16.8. They let you use state and
-            other React features without writing a class.
-          </p>
-        </Expand>
+      <div className="page">
+        <BrowserRouter>
+          <ul className="navigation">
+            <li className="navigation__item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="navigation__item">
+              <Link to="/products">Products</Link>
+            </li>
+          </ul>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/products">
+            {" "}
+            <Products />
+          </Route>
+        </BrowserRouter>
       </div>
     );
   }
