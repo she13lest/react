@@ -1,14 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Product = ({...rest}) => {
-  render() {
-    return (
-      <div className="product">
-        <Link to="/products"></Link>
-      </div>
-    );
-  }
-}
+const Product = ({ match }) => {
+  return (
+    <div className="product">{`Product is ${match.params.productId}`}</div>
+  );
+};
 
 export default Product;
