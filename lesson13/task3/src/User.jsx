@@ -7,20 +7,27 @@ class User extends React.Component {
 
   componentDidMount() {
     this.fetchUser(this.props.match.params.userId);
+    this._isMounted = true;
   }
 
   componentDidUpdate() {
     this.fetchUser(this.props.match.params.userId);
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   fetchUser = (userId) => {
-    fetch(`https://api.github.com/users/${userId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          user: data,
+    if (this._isMounted) {
+      fetch(`https://api.github.com/users/${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({
+            user: data,
+          });
         });
-      });
+    }
   };
 
   render() {
