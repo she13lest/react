@@ -6,8 +6,8 @@ class User extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchUser(this.props.match.params.userId);
     this._isMounted = true;
+    this.fetchUser(this.props.match.params.userId);
   }
 
   componentDidUpdate() {
