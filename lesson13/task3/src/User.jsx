@@ -9,6 +9,10 @@ class User extends React.Component {
     this.fetchUser(this.props.match.params.userId);
   }
 
+  componentDidUpdate() {
+    this.fetchUser(this.props.match.params.userId);
+  }
+
   fetchUser = (userId) => {
     fetch(`https://api.github.com/users/${userId}`)
       .then((response) => response.json())
@@ -20,7 +24,6 @@ class User extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const { user } = this.state;
     if (!user) {
       return null;
