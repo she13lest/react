@@ -6,7 +6,7 @@ class User extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchUser(this.props.userId);
+    this.fetchUser(this.props.match.params.userId);
   }
 
   fetchUser = (userId) => {
@@ -20,6 +20,7 @@ class User extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const { user } = this.state;
     if (!user) {
       return null;
