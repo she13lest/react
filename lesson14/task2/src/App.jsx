@@ -21,7 +21,7 @@ class App extends React.Component {
               <Route path="/users/:userId">
                 <User />
               </Route>
-              <Route path="/users">
+              <Route path="/">
                 <span>Select a user please</span>
               </Route>
             </Switch>
