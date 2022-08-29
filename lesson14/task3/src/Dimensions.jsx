@@ -1,15 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const Dimensions = () => {
-  const [demensions, setDemensions] = useState({
+  const [demensions, setDimensions] = useState({
     width: null,
-    heigth: null,
+    height: null,
   });
 
   useEffect(() => {
-    const { innerWidth, innerHeigth } = window;
-    setDemensions({ width: innerWidth, heigth: innerHeigth });
-  });
+    const { innerWidth, innerHeight } = window;
+    setDimensions({ width: innerWidth, heigth: innerHeight });
+
+    const handleResize = (e) => {
+      const { innerWidth, innerHeight } = e.target;
+      setDimensions({ width: innerWidth, heigth: innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const { width, heigth } = demensions;
 
