@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import App from "./App";
+import Dimensions from "./Dimensions";
 
 const elementRoot = document.querySelector("#root");
 
-ReactDOM.render(<App />, elementRoot);
+ReactDOM.render(<Dimensions />, elementRoot);
